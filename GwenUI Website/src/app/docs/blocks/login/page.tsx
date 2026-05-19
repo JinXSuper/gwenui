@@ -8,7 +8,7 @@ import { DocsPrevNext } from "@/components/docs/DocsPrevNext";
 import { codeToHtml } from "shiki";
 import { nav } from "../../nav";
 
-const GITHUB_RAW = "https://raw.githubusercontent.com/JinXSuper/jinxsuper-gwen-ui-login/main/components";
+const GITHUB_RAW = "https://raw.githubusercontent.com/JinXSuper/gwenui/main/blocks/auth-login/components";
 const PAGE_PATHNAME = "/docs/blocks/login";
 
 const loginBlockConfig = {
@@ -17,7 +17,7 @@ const loginBlockConfig = {
   category: "Authentication",
   command: "npx @gwenui/cli add login",
   previewUrl: "https://gwen-ui-login.vercel.app/login",
-  githubUrl: "https://github.com/JinXSuper/jinxsuper-gwen-ui-login",
+  githubUrl: "https://github.com/JinXSuper/gwenui/tree/main/blocks/auth-login",
   codeFiles: [
     { label: "login-form.tsx", url: `${GITHUB_RAW}/login-form.tsx` },
     { label: "Grainient.tsx", url: `${GITHUB_RAW}/Grainient.tsx` },

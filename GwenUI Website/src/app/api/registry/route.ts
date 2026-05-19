@@ -11,7 +11,7 @@ export async function GET() {
         "description": "A clean, full-page authentication layout with email/password form, social login slots, and subtle Framer Motion animations.",
         "tier": "basic",
         "version": "1.0.0",
-        "license": "ELv2",
+        "license": "MIT",
         "files": [
           {
             "path": "auth-login/index.tsx",
@@ -29,7 +29,7 @@ export async function GET() {
         "description": "A cinematic parallax hero section with depth layers, mouse-tracking 3D tilt, and scroll-driven animations.",
         "tier": "supreme",
         "version": "1.0.0",
-        "license": "MIT+CommonsClause",
+        "license": "ELv2",
         "files": [
           {
             "path": "parallax-hero/index.tsx",
