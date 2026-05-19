@@ -1,0 +1,79 @@
+---
+title: OKLCH Colors
+description: GwenUI uses OKLCH — a perceptually uniform color space that produces consistent contrast ratios across all hues.
+---
+
+## Why OKLCH?
+
+Most design systems use HSL or HEX for colors. GwenUI uses **OKLCH** for all tokens.
+
+The difference matters: in HSL, two colors at the same lightness value can appear
+visually very different in brightness. OKLCH is **perceptually uniform** — the same
+lightness value always produces the same perceived brightness, regardless of hue.
+
+```css
+/* HSL — same lightness, wildly different perceived brightness */
+hsl(60 80% 50%)   /* yellow — looks very bright */
+hsl(240 80% 50%)  /* blue — looks much darker */
+
+/* OKLCH — same lightness, consistent perceived brightness */
+oklch(60% 0.18 60)   /* yellow-orange */
+oklch(60% 0.18 240)  /* blue */
+/* Both appear the same brightness ✅ */
+```
+
+## OKLCH syntax
+
+```css
+oklch(L C H / A)
+```
+
+| Parameter | Range | Description |
+|---|---|---|
+| `L` (Lightness) | `0%` – `100%` | Perceived brightness |
+| `C` (Chroma) | `0` – `0.4` | Color saturation/intensity |
+| `H` (Hue) | `0` – `360` | Color wheel angle |
+| `A` (Alpha) | `0` – `1` | Opacity (optional) |
+
+## GwenUI primary color anatomy
+
+```css
+--primary: oklch(68% 0.18 48);
+/*                ↑    ↑   ↑
+                  │    │   └── Hue 48 = orange-amber
+                  │    └────── Chroma 0.18 = vivid but not harsh
+                  └─────────── Lightness 68% = bright, accessible on dark bg
+```
+
+## Browser support
+
+OKLCH is supported in all modern browsers:
+
+| Browser | Support |
+|---|---|
+| Chrome 111+ | ✅ |
+| Firefox 113+ | ✅ |
+| Safari 15.4+ | ✅ |
+| Edge 111+ | ✅ |
+
+> For older browser support, use a PostCSS plugin like `postcss-oklch` to
+> convert OKLCH values to HSL fallbacks at build time.
+
+## Creating custom colors
+
+When creating custom tokens, use OKLCH to maintain perceptual consistency:
+
+```css
+:root {
+  /* Custom accent — same lightness as --primary for visual harmony */
+  --accent: oklch(68% 0.18 200);  /* teal, same brightness as orange primary */
+}
+```
+
+Keep chroma between `0.1` and `0.25` for UI colors — above `0.3` can exceed
+the sRGB gamut on some displays.
+
+## Tools
+
+- [oklch.com](https://oklch.com) — interactive OKLCH color picker
+- [evilmartians.com/oklch](https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl) — deep dive by Evil Martians

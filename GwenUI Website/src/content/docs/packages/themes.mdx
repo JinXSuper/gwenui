@@ -1,0 +1,63 @@
+---
+title: "@gwenui/themes"
+description: Foundation package for GwenUI — OKLCH design tokens and self-hosted fonts.
+---
+
+## Overview
+
+`@gwenui/themes` is the foundation of GwenUI. It provides:
+
+- OKLCH-based CSS custom properties (design tokens)
+- Self-hosted fonts: Plus Jakarta Sans, Lora, Space Mono
+- Theme definitions: `gwen-noir` (dark), `violet-dusk` (light, coming soon)
+
+All other GwenUI packages depend on `@gwenui/themes`.
+
+## Installation
+
+<PackageManagerTabs>
+  <Tab value="npm">
+    ```bash
+    npm install @gwenui/themes
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add @gwenui/themes
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add @gwenui/themes
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bun add @gwenui/themes
+    ```
+  </Tab>
+</PackageManagerTabs>
+
+## Usage
+
+Import tokens and fonts in your `globals.css`:
+
+```css
+@import "@gwenui/themes/tokens";
+@import "@gwenui/themes/fonts";
+```
+
+## Exports
+
+| Export | Description |
+|---|---|
+| `@gwenui/themes/tokens` | OKLCH CSS custom properties |
+| `@gwenui/themes/fonts` | Self-hosted font-face declarations |
+
+## Token list
+
+See [Design Tokens](/docs/theming/design-tokens) for the full token reference.
+
+## Status
+
+Published on npm. Stable. ✅

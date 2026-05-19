@@ -1,0 +1,56 @@
+---
+title: "@gwenui/react"
+description: 2D full-page blocks for React — shadcn/ui recolored with GwenUI tokens + Framer Motion animations.
+---
+
+## Overview
+
+`@gwenui/react` is the main block library for GwenUI. It ships full-page 2D blocks
+built on top of shadcn/ui components, recolored with GwenUI design tokens and
+animated with Framer Motion.
+
+> Blocks in `@gwenui/react` are **not installed from node_modules** — they are
+> copied into your project via the CLI. You own the code.
+
+## Installation
+
+Blocks are installed via the CLI:
+
+```bash
+gwen-ui add <block>
+```
+
+See [add](/docs/cli/add) for full usage.
+
+## Available blocks
+
+| Block | Category | Description |
+|---|---|---|
+| `login` | Components | Cinematic glassmorphic login screen with animated noise background |
+| `pricing` | Components | Modern three-tier glass card pricing system with floating feature lists |
+| `ai-chat` | Components | Smooth streaming chat UI with liquid animations and markdown support |
+| `hyper-text` | Text Animations | Scramble effect that cycles through characters before revealing the text |
+| `text-animate` | Text Animations | Animate characters with staggered delays and premium easing effects |
+| `velocity-scroll` | Text Animations | Kinetic typography that scrolls horizontally based on window scroll speed |
+| `letter-cascade` | Text Animations | Spring-physics based letters that scatter dynamically with drag/hover |
+| `text-repel` | Text Animations | Letters that react dynamically and repel from the cursor |
+| `particle-typography` | Text Animations | Interactive typographic art composed of dynamic organic particle systems |
+| `grainient` | Hero Backgrounds | Premium animated noise gradient backdrop with blend modes |
+| `solaris` | Hero Backgrounds | Interactive 3D/WebGL fluid shader background for landing pages |
+| `magnetic-button` | Visual Effects | Magnetic attraction button with custom chromatic aberration hover effect |
+| `glass-surface` | Visual Effects | Custom glassmorphic container with responsive shimmer highlights |
+
+> More blocks are added regularly. Run `gwen-ui add --list` to see all available blocks.
+
+## Stack
+
+| Dependency | Usage |
+|---|---|
+| shadcn/ui | Atomic component primitives |
+| Framer Motion | Entrance animations, interactions |
+| Tailwind CSS v4 | Utility styling |
+| Lucide React | Icons |
+
+## Status
+
+In active development. First blocks shipping soon. 🚧

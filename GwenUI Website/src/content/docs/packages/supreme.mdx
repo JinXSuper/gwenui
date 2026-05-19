@@ -1,0 +1,83 @@
+---
+title: "@gwenui/supreme"
+description: 3D full-page blocks and utilities for GwenUI — React Three Fiber, WebGL, and cinematic transitions.
+---
+
+## Overview
+
+`@gwenui/supreme` is the premium tier of GwenUI. It ships 3D blocks and transition
+utilities powered by React Three Fiber, WebGL, and native SVG animations.
+
+> Supreme blocks require WebGL support. They gracefully degrade on unsupported
+> devices — falling back to static layouts.
+
+## What's included
+
+### Blocks
+
+| Block | Description |
+|---|---|
+| `parallax-hero` | Floating layered images with mouse-driven parallax |
+
+### Utilities
+
+| Utility | Description |
+|---|---|
+| `mask-transition` | SVG mask page transition system — circle expand/shrink |
+
+## Installation
+
+Supreme blocks are installed via the CLI:
+
+```bash
+gwen-ui add parallax-hero
+```
+
+The CLI automatically installs required dependencies (`@react-three/fiber`,
+`@react-three/drei`, `three`) when adding a Supreme block.
+
+## Transition system
+
+`@gwenui/supreme` includes a lightweight page transition system:
+
+```tsx
+// Wrap your root layout
+import { TransitionLayout } from '@/components/supreme/mask-transition'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <TransitionLayout>{children}</TransitionLayout>
+      </body>
+    </html>
+  )
+}
+```
+
+```tsx
+// Use the hook for programmatic navigation
+import { usePageTransition } from '@/components/supreme/mask-transition'
+
+const { navigateTo } = usePageTransition()
+
+<button onClick={() => navigateTo('/blocks')}>
+  Explore Blocks
+</button>
+```
+
+See the [Supreme — Parallax Hero](/docs/blocks/parallax-hero) block for a full example.
+
+## Stack
+
+| Dependency | Usage |
+|---|---|
+| React Three Fiber | 3D rendering |
+| Drei | R3F helpers and abstractions |
+| Three.js | WebGL engine |
+| Zustand | Transition state management |
+| Framer Motion | Orchestration and timing |
+
+## Status
+
+In active development. First blocks shipping soon. 🚧

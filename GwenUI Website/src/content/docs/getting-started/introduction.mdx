@@ -1,0 +1,34 @@
+---
+title: Introduction
+description: GwenUI adalah design system dan component library berbasis React, dibangun di atas shadcn/ui dengan GwenUI design tokens, Framer Motion, dan dukungan 3D via @gwenui/supreme.
+---
+
+## What is GwenUI?
+
+GwenUI is a design system built for modern web applications. It ships with a carefully crafted
+set of OKLCH-based design tokens, a CLI for installing blocks directly into your project,
+and an optional Supreme tier for WebGL-powered 3D components.
+
+## Packages
+
+GwenUI is organized into focused packages:
+
+| Package | Description |
+|---|---|
+| `@gwenui/themes` | Foundation tokens, self-hosted fonts (Plus Jakarta Sans, Lora, Space Mono) |
+| `@gwenui/react` | 2D full-page blocks, shadcn recolored + Framer Motion |
+| `@gwenui/supreme` | 3D full-page blocks, R3F + Framer Motion |
+| `@gwenui/cli` | CLI installer — `gwen-ui add <block>` |
+
+## Design Philosophy
+
+GwenUI uses **OKLCH** for all color tokens — a perceptually uniform color space
+that produces more consistent contrast ratios across the full hue range compared
+to HSL or HEX.
+
+> All colors are defined as CSS custom properties. No hardcoded hex values anywhere
+> in the component tree.
+
+## License
+
+GwenUI is licensed under the **Elastic License 2.0 (ELv2)**.

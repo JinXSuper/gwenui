@@ -1,0 +1,42 @@
+---
+title: Quick Start
+description: From zero to your first GwenUI block in under 5 minutes.
+---
+
+## 1. Init your project
+
+```bash
+npx gwen-ui init
+```
+
+Follow the prompts. GwenUI will detect your project structure and configure tokens automatically.
+
+## 2. Add your first block
+
+```bash
+npx gwen-ui add pricing
+```
+
+This copies the Pricing block into `src/components/blocks/pricing/`.
+
+## 3. Use it in your page
+
+```tsx
+import { PricingBlock } from '@/components/blocks/pricing'
+
+export default function Page() {
+  return <PricingBlock />
+}
+```
+
+## 4. Customize
+
+All blocks use GwenUI CSS tokens. Override any token in your `globals.css`:
+
+```css
+:root {
+  --primary: oklch(68% 0.18 48);   /* Gwen Orange — change to anything */
+}
+```
+
+> No rebuild needed — tokens are CSS custom properties, changes apply instantly.

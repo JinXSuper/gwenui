@@ -1,0 +1,90 @@
+---
+title: CLI Overview
+description: The GwenUI CLI lets you install blocks directly into your project with a single command.
+---
+
+## What is the GwenUI CLI?
+
+The `@gwenui/cli` is a command-line tool that installs GwenUI blocks directly into your
+project. Blocks are copied as source files — you own the code, and can customize freely.
+
+The CLI is built with [Ink](https://github.com/vadimdemedes/ink) — a React-based
+terminal UI framework — giving it an interactive, polished experience compared to
+traditional shell scripts.
+
+## Installation
+
+You can use the GwenUI CLI either by executing it directly on-the-fly (Recommended), or by installing it globally on your system.
+
+### Option 1: Direct Execution (Recommended)
+
+Run the CLI directly without installing it globally. This ensures you always use the latest version.
+
+<PackageManagerTabs>
+  <Tab value="npm">
+    ```bash
+    npx gwen-ui <command>
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx gwen-ui <command>
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx gwen-ui <command>
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx gwen-ui <command>
+    ```
+  </Tab>
+</PackageManagerTabs>
+
+### Option 2: Global Installation
+
+If you prefer to have the `gwen-ui` command available globally across your system:
+
+<PackageManagerTabs>
+  <Tab value="npm">
+    ```bash
+    npm install -g @gwenui/cli
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add -g @gwenui/cli
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn global add @gwenui/cli
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bun add -g @gwenui/cli
+    ```
+  </Tab>
+</PackageManagerTabs>
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `gwen-ui init` | Initialize GwenUI in your project |
+| `gwen-ui add <block>` | Add a block to your project |
+
+## How it works
+
+When you run `gwen-ui add <block>`, the CLI:
+
+1. Reads your global config at `~/.gwen/config.json`
+2. Checks for file conflicts in your project
+3. Copies the block source files into your project
+4. Installs any missing dependencies
+
+> Blocks are not imported from `node_modules` — they live in your codebase.
+> This means full control, zero version lock-in.

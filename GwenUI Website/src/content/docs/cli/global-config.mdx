@@ -1,0 +1,68 @@
+---
+title: Global Config
+description: GwenUI CLI stores your preferences in a global config file at ~/.gwen/config.json.
+---
+
+## Location
+
+```bash
+~/.gwen/config.json
+```
+
+The global config persists your preferences across all GwenUI projects on your machine.
+
+## Config structure
+
+```json
+{
+  "blocksDir": "src/components/blocks",
+  "cssFile": "src/app/globals.css",
+  "theme": "gwen-noir",
+  "packageManager": "pnpm"
+}
+```
+
+## Fields
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `blocksDir` | `string` | `src/components/blocks` | Where blocks are installed |
+| `cssFile` | `string` | `src/app/globals.css` | Your global CSS file path |
+| `theme` | `string` | `gwen-noir` | Active GwenUI theme |
+| `packageManager` | `string` | auto-detected | Package manager to use |
+
+## Editing the config
+
+The config is plain JSON — edit it directly:
+
+```bash
+# Open in your default editor
+code ~/.gwen/config.json
+
+# Or cat to inspect
+cat ~/.gwen/config.json
+```
+
+> Editing the global config affects all GwenUI projects on your machine.
+> Per-project overrides are not yet supported — coming in a future release.
+
+## Resetting the config
+
+Delete the config file to reset to defaults:
+
+```bash
+rm ~/.gwen/config.json
+```
+
+Then run `gwen-ui init` again to reconfigure.
+
+## Package manager detection
+
+If `packageManager` is not set, the CLI auto-detects based on lockfiles:
+
+| Lockfile | Detected |
+|---|---|
+| `pnpm-lock.yaml` | pnpm |
+| `yarn.lock` | yarn |
+| `bun.lockb` | bun |
+| `package-lock.json` | npm |
