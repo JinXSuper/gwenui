@@ -1,128 +1,99 @@
 export type BlockCategory = "Text Animations" | "Components" | "Hero Backgrounds" | "Visual Effects" | "Layout"
 
+export type BlockType = "basic" | "supreme" | "ai"
+
 export type Block = {
   id: string
   name: string
   description: string
   category: BlockCategory
+  type: BlockType
   previewUrl: string
   docsUrl: string
   installCmd: string
 }
 
 export const BLOCKS: Block[] = [
-  // --- Text Animations ---
-  {
-    id: "hyper-text",
-    name: "Hyper Text",
-    description: "A text scramble effect that cycles through characters before revealing the final text.",
-    category: "Text Animations",
-    previewUrl: "/preview/hyper-text",
-    docsUrl: "/docs/blocks/hyper-text",
-    installCmd: "npx @gwenui/cli add hyper-text",
-  },
-  {
-    id: "text-animate",
-    name: "Text Animate",
-    description: "Animate text characters with staggered delays and premium easing effects.",
-    category: "Text Animations",
-    previewUrl: "/preview/text-animate",
-    docsUrl: "/docs/blocks/text-animate",
-    installCmd: "npx @gwenui/cli add text-animate",
-  },
-  {
-    id: "velocity-scroll",
-    name: "Velocity Scroll",
-    description: "Text that moves horizontally based on the current window scroll speed.",
-    category: "Text Animations",
-    previewUrl: "/preview/velocity-scroll",
-    docsUrl: "/docs/blocks/velocity-scroll",
-    installCmd: "npx @gwenui/cli add velocity-scroll",
-  },
-  {
-    id: "letter-cascade",
-    name: "Letter Cascade",
-    description: "Kinetic text animation where letters scatter outward with customizable spring physicals.",
-    category: "Text Animations",
-    previewUrl: "/preview/letter-cascade",
-    docsUrl: "/docs/blocks/letter-cascade",
-    installCmd: "npx @gwenui/cli add letter-cascade",
-  },
-  {
-    id: "text-repel",
-    name: "Text Repel",
-    description: "Physics-based text elements where each letter reacts dynamically to cursor proximity.",
-    category: "Text Animations",
-    previewUrl: "/preview/text-repel",
-    docsUrl: "/docs/blocks/text-repel",
-    installCmd: "npx @gwenui/cli add text-repel",
-  },
-  {
-    id: "particle-typography",
-    name: "Particle Typography",
-    description: "Renders dynamic typography constructed entirely from fluid, organic particle systems.",
-    category: "Text Animations",
-    previewUrl: "/preview/particle-typography",
-    docsUrl: "/docs/blocks/particle-typography",
-    installCmd: "npx @gwenui/cli add particle-typography",
-  },
-
   // --- Components ---
   {
-    id: "login",
+    id: "auth-login",
     name: "Auth — Login",
     description: "Cinematic glassmorphic login screen with animated noise background.",
     category: "Components",
-    previewUrl: "/preview/login",
+    type: "basic",
+    previewUrl: "/preview/auth-login",
     docsUrl: "/docs/blocks/login",
-    installCmd: "npx @gwenui/cli add login",
+    installCmd: "npx gwenui add auth-login",
   },
   {
-    id: "pricing",
+    id: "dynamic-pricing",
     name: "Interactive Pricing Table",
     description: "Modern three-tier glass card pricing system with floating feature lists.",
     category: "Components",
-    previewUrl: "/preview/pricing",
-    docsUrl: "/docs/blocks/pricing",
-    installCmd: "npx @gwenui/cli add pricing",
+    type: "basic",
+    previewUrl: "/preview/dynamic-pricing",
+    docsUrl: "/docs/blocks/dynamic-pricing",
+    installCmd: "npx gwenui add dynamic-pricing",
   },
   {
-    id: "ai-chat",
-    name: "AI Chat Interface",
-    description: "Smooth streaming chat UI with liquid animations and markdown support.",
+    id: "testimonial-marquee",
+    name: "Testimonial Marquee",
+    description: "Infinite scrolling marquee of testimonial cards with pause-on-hover.",
     category: "Components",
-    previewUrl: "/preview/ai-chat",
-    docsUrl: "/docs/blocks/ai-chat",
-    installCmd: "npx @gwenui/cli add ai-chat",
+    type: "basic",
+    previewUrl: "/preview/testimonial-marquee",
+    docsUrl: "/docs/blocks/testimonial-marquee",
+    installCmd: "npx gwenui add testimonial-marquee",
+  },
+  {
+    id: "ai-chat-hero",
+    name: "AI Chat Hero",
+    description: "Gemini-style streaming chat UI hero with animated responses.",
+    category: "Components",
+    type: "ai",
+    previewUrl: "/preview/ai-chat-hero",
+    docsUrl: "/docs/blocks/ai-chat-hero",
+    installCmd: "npx gwenui add ai-chat-hero",
+  },
+  {
+    id: "meet-the-team",
+    name: "Meet the Team",
+    description: "Hover-reveal team member cards with smooth animated overlays.",
+    category: "Components",
+    type: "basic",
+    previewUrl: "/preview/meet-the-team",
+    docsUrl: "/docs/blocks/meet-the-team",
+    installCmd: "npx gwenui add meet-the-team",
+  },
+  {
+    id: "before-after-slider",
+    name: "Before After Slider",
+    description: "Drag-to-reveal image comparison slider with spring physics.",
+    category: "Components",
+    type: "basic",
+    previewUrl: "/preview/before-after-slider",
+    docsUrl: "/docs/blocks/before-after-slider",
+    installCmd: "npx gwenui add before-after-slider",
+  },
+  {
+    id: "comparison-table",
+    name: "Comparison Table",
+    description: "Claude-style tiered pricing comparison table with highlighted recommended plan.",
+    category: "Components",
+    type: "basic",
+    previewUrl: "/preview/comparison-table",
+    docsUrl: "/docs/blocks/comparison-table",
+    installCmd: "npx gwenui add comparison-table",
   },
   {
     id: "parallax-hero",
     name: "Supreme — Parallax Hero",
     description: "Ultra-premium, interactive 3D spring-physics parallax hero block with high-fidelity depth card stack.",
     category: "Components",
+    type: "supreme",
     previewUrl: "/preview/parallax-hero",
     docsUrl: "/docs/blocks/parallax-hero",
-    installCmd: "npx @gwenui/cli add parallax-hero",
-  },
-
-  // --- Hero Backgrounds ---
-  {
-    id: "grainient",
-    name: "Grainient Backdrop",
-    description: "Animated grain texture overlay with customizable blend modes.",
-    category: "Hero Backgrounds",
-    previewUrl: "/preview/grainient",
-    docsUrl: "/docs/blocks/grainient",
-    installCmd: "npx @gwenui/cli add grainient",
-  },
-  {
-    id: "solaris",
-    name: "Solaris Shader",
-    description: "Premium dynamic WebGL fluid shader for landing page hero backdrops.",
-    category: "Hero Backgrounds",
-    previewUrl: "/preview/solaris",
-    docsUrl: "/docs/blocks/solaris",
-    installCmd: "npx @gwenui/cli add solaris",
+    installCmd: "npx gwenui add parallax-hero",
   },
 
   // --- Layout ---
@@ -131,28 +102,19 @@ export const BLOCKS: Block[] = [
     name: "Bento Grid",
     description: "Asymmetric CSS grid with staggered entrance animations and hover depth effects. Ideal for SaaS feature showcases.",
     category: "Layout",
+    type: "basic",
     previewUrl: "/preview/bento-grid",
     docsUrl: "/docs/blocks/bento-grid",
-    installCmd: "npx @gwenui/cli add bento-grid",
-  },
-
-  // --- Visual Effects ---
-  {
-    id: "magnetic-button",
-    name: "Magnetic Button",
-    description: "Smooth cursor-attracting button with chromatic aberration hover effects.",
-    category: "Visual Effects",
-    previewUrl: "/preview/magnetic-button",
-    docsUrl: "/docs/blocks/magnetic-button",
-    installCmd: "npx @gwenui/cli add magnetic-button",
+    installCmd: "npx gwenui add bento-grid",
   },
   {
-    id: "glass-surface",
-    name: "Glass Surface",
-    description: "High-performance glassmorphic container with custom shimmer highlights.",
-    category: "Visual Effects",
-    previewUrl: "/preview/glass-surface",
-    docsUrl: "/docs/blocks/glass-surface",
-    installCmd: "npx @gwenui/cli add glass-surface",
-  }
+    id: "feature-walkthrough",
+    name: "Feature Walkthrough",
+    description: "Scroll-driven step-by-step feature showcase with animated transitions.",
+    category: "Layout",
+    type: "basic",
+    previewUrl: "/preview/feature-walkthrough",
+    docsUrl: "/docs/blocks/feature-walkthrough",
+    installCmd: "npx gwenui add feature-walkthrough",
+  },
 ]
