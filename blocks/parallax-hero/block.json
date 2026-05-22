@@ -1,0 +1,13 @@
+{
+  "name": "parallax-hero",
+  "title": "Parallax Hero",
+  "description": "Hero section with floating parallax images + SVG text hover gradient background.",
+  "category": "supreme",
+  "license": "BSL-1.1",
+  "tags": ["hero", "parallax", "mouse", "framer-motion", "svg", "text-effect"],
+  "dependencies": ["framer-motion"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "supreme"
+  }
+}

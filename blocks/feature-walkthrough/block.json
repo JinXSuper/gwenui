@@ -1,0 +1,13 @@
+{
+  "name": "feature-walkthrough",
+  "title": "Feature Walkthrough",
+  "description": "Interactive step-by-step feature walkthrough with sticky preview panel and auto-play.",
+  "category": "marketing",
+  "license": "MIT",
+  "tags": ["walkthrough", "onboarding", "steps", "preview", "saas"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

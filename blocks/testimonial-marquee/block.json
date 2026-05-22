@@ -1,0 +1,13 @@
+{
+  "name": "testimonial-marquee",
+  "title": "Testimonial Marquee",
+  "description": "Infinite auto-scroll testimonial marquee with Twitter/X style cards.",
+  "category": "testimonial",
+  "license": "MIT",
+  "tags": ["testimonial", "marquee", "social-proof", "dark"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

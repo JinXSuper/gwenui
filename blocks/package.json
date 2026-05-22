@@ -1,0 +1,25 @@
+{
+  "name": "gwenui-blocks",
+  "version": "0.4.1",
+  "private": true,
+  "description": "GwenUI block components — single source of truth",
+  "exports": {
+    "./ai-chat-hero": "./ai-chat-hero/index.tsx",
+    "./auth-login": "./auth-login/index.tsx",
+    "./before-after-slider": "./before-after-slider/index.ts",
+    "./bento-grid": "./bento-grid/index.ts",
+    "./comparison-table": "./comparison-table/index.ts",
+    "./dynamic-pricing": "./dynamic-pricing/index.ts",
+    "./feature-walkthrough": "./feature-walkthrough/index.ts",
+    "./meet-the-team": "./meet-the-team/index.ts",
+    "./parallax-hero": "./parallax-hero/index.tsx",
+    "./testimonial-marquee": "./testimonial-marquee/index.tsx"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.400.0",
+    "three": "^0.160.0"
+  }
+}

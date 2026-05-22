@@ -1,0 +1,13 @@
+{
+  "name": "before-after-slider",
+  "title": "Before-After Slider",
+  "description": "A touch-friendly interactive image comparison slider with glassmorphic labels, pointer-based drag, and clip-path reveal.",
+  "category": "feature",
+  "license": "MIT",
+  "tags": ["slider", "before-after", "image", "comparison", "media"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

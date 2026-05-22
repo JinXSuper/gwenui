@@ -1,0 +1,13 @@
+{
+  "name": "bento-grid",
+  "title": "Bento Grid",
+  "description": "Asymmetric CSS grid layout with staggered Framer Motion entrance animations and hover effects. Ideal for SaaS feature showcases.",
+  "category": "layout",
+  "license": "MIT",
+  "tags": ["bento", "grid", "layout", "features", "dark"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "dynamic-pricing",
+  "title": "Dynamic Pricing",
+  "description": "Dynamic Pricing block component with slot-machine digit animation.",
+  "category": "pricing",
+  "license": "MIT",
+  "tags": ["pricing", "dynamic", "animation", "cards"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "comparison-table",
+  "title": "Comparison Table",
+  "description": "Claude-style pricing comparison table with billing toggle, sticky headers, and highlighted plan column.",
+  "category": "pricing",
+  "license": "MIT",
+  "tags": ["pricing", "comparison", "table", "saas", "plans"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

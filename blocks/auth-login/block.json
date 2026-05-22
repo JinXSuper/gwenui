@@ -1,0 +1,13 @@
+{
+  "name": "auth-login",
+  "title": "Auth Login",
+  "description": "Clean login form block with OAuth support, GwenUI dark tokens.",
+  "category": "auth",
+  "license": "MIT",
+  "tags": ["auth", "login", "form", "dark"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

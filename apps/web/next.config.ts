@@ -1,16 +1,14 @@
 import type { NextConfig } from "next";
 import path from "path";
-import { createRequire } from "module";
+import { readFileSync } from "fs";
 
 const blocksRoot = path.join(__dirname, "../../blocks");
 const blocksRel = "../../blocks";
 
-const requireBlocks = createRequire(path.join(blocksRoot, "package.json"));
-const blocksPkg = requireBlocks("./package.json") as {
-  exports: Record<string, string>;
-};
+const blocksPkg = JSON.parse(
+  readFileSync(path.join(blocksRoot, "package.json"), "utf-8")
+) as { exports: Record<string, string> };
 
-/** Map gwenui-blocks/<name> → source entry (Turbopack needs relative paths on Windows). */
 function buildBlockAliases(relative: boolean): Record<string, string> {
   const aliases: Record<string, string> = {};
   for (const [sub, target] of Object.entries(blocksPkg.exports)) {

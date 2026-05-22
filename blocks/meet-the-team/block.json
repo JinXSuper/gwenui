@@ -1,0 +1,13 @@
+{
+  "name": "meet-the-team",
+  "title": "Meet the Team",
+  "description": "Editorial Meet the Team block component with playful rotating member cards and overflowing photo animation.",
+  "category": "team",
+  "license": "MIT",
+  "tags": ["team", "cards", "animation", "motion"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}

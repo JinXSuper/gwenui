@@ -1,0 +1,13 @@
+{
+  "name": "ai-chat-hero",
+  "title": "AI Chat Hero",
+  "description": "Full-page AI chat interface hero block, Gemini-inspired with GwenUI dark tokens.",
+  "category": "hero",
+  "license": "MIT",
+  "tags": ["hero", "chat", "ai", "dark"],
+  "dependencies": ["framer-motion", "lucide-react"],
+  "gwenui": {
+    "theme": "gwen-noir",
+    "type": "basic"
+  }
+}
