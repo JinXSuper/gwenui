@@ -1,0 +1,85 @@
+---
+title: Parallax Hero
+description: Ultra-premium interactive 3D spring-physics parallax hero block with cinematic dark aesthetic and depth card stack.
+tier: supreme
+---
+
+An ultra-premium, interactive 3D spring-physics parallax hero block styled with a cinematic dark aesthetic, thinned spotlight vector hover backdrop, and a glowing gradient ambient shadow header. Built for high performance and visual excellence.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add parallax-hero" />
+
+## File Structure
+
+```bash
+parallax-hero/
+├── index.tsx                      # Main entry point (ParallaxHero)
+├── components/
+│   ├── FloatingImage.tsx          # Depth card with spring physics
+│   └── TextHoverEffect.tsx        # SVG spotlight hover backdrop
+└── block.json                     # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import { ParallaxHero } from "@/components/blocks/parallax-hero";
+
+export default function Page() {
+  return (
+    <ParallaxHero
+      headline="Build the future, one pixel at a time."
+      description="GwenUI gives you premium blocks to ship faster."
+      primaryCta="Get Started"
+      secondaryCta="View Blocks"
+      bgText="GWEN"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `headline` | `string` | required | Main hero title rendered in Lora Serif with glowing backlight shadow. |
+| `description` | `string` | `undefined` | Description paragraph below the title. |
+| `primaryCta` | `string` | required | Label for the primary CTA button. |
+| `secondaryCta` | `string` | required | Label for the secondary outline button. |
+| `bgText` | `string` | `"GWEN"` | Massive word rendered as the thinned SVG spotlight backdrop. |
+| `layers` | `ParallaxImageLayer[]` | 5 defaults | Floating depth card configuration (src, depth, offset, dimensions, rotation). |
+| `onPrimaryClick` | `() => void` | `undefined` | Click handler for the primary CTA. |
+| `onSecondaryClick` | `() => void` | `undefined` | Click handler for the secondary CTA. |
+| `className` | `string` | `""` | Extra CSS classes on the root container. |
+
+## ParallaxImageLayer Type
+
+```ts
+interface ParallaxImageLayer {
+  src: string
+  depth: number        // Positive = foreground, negative = background movement
+  xOffset: string      // CSS positioning (e.g. "left-[8%] top-[12%]")
+  yOffset?: string
+  width: number
+  height: number
+  rotation?: number
+  zIndex: number
+  alt: string
+}
+```
+
+## Performance & Quality
+
+- **Zero Layout Shifts (CLS):** Card containers are pre-seeded with precise width and height bounds.
+- **Optimized Assets:** WebP layers pruned from 6.43 MB to 598 KB — a 90% reduction.
+- **Strict TypeScript:** 100% type-safe with strict compile parameters.
+- **Font Harmony:** Lora serif for cinematic focus, Plus Jakarta Sans for UI elements.
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Spring inertia & mouse tracking |
+| `lucide-react` | Vector icon library |
+| `@radix-ui/react-slot` | Accessible button composition |

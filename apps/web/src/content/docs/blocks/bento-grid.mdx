@@ -1,0 +1,101 @@
+---
+title: Bento Grid
+description: Asymmetric CSS grid layout with staggered entrance animations and hover effects. Ideal for SaaS feature showcases.
+---
+
+Asymmetric CSS grid layout with staggered Framer Motion entrance animations and hover depth effects. Each cell has an icon, label, title, and description. The hero cell includes a decorative gradient orb and an optional children slot for CTAs or custom content.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add bento-grid" />
+
+## File Structure
+
+```bash
+bento-grid/
+├── BentoGrid.tsx   # BentoGrid + BentoCell components & demo data
+├── index.ts        # Module entry point (re-exports)
+└── block.json      # Block metadata configuration
+```
+
+## Usage
+
+Drop in the default grid with demo data:
+
+```tsx
+import { BentoGrid } from "@/components/blocks/bento-grid";
+
+export default function Page() {
+  return <BentoGrid />;
+}
+```
+
+## Custom Cells
+
+Build your own layout using `BentoCell` directly:
+
+```tsx
+import { BentoGrid, BentoCell } from "@/components/blocks/bento-grid";
+import { Zap, Shield, Moon } from "lucide-react";
+
+export default function Page() {
+  return (
+    <div className="grid grid-cols-12 gap-4 max-w-6xl mx-auto p-8">
+      <BentoCell
+        size="hero"
+        icon={Zap}
+        label="Core Feature"
+        title="Ship Faster"
+        description="Drop in production-ready blocks and go from idea to deployed in minutes."
+        index={0}
+      />
+      <BentoCell
+        size="md"
+        icon={Shield}
+        label="TypeScript"
+        title="Type-safe"
+        description="Full TypeScript types ship with every block."
+        index={1}
+      />
+      <BentoCell
+        size="md"
+        icon={Moon}
+        label="Theming"
+        title="Dark by default"
+        description="OKLCH color science. Gwen Noir ships out of the box."
+        index={2}
+      />
+    </div>
+  );
+}
+```
+
+## BentoCell Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `"hero" \| "md" \| "sm"` | required | Cell size. `hero` spans 8 cols / 2 rows, `md` and `sm` span 4 cols / 1 row. |
+| `icon` | `LucideIcon` | required | Lucide icon component rendered in the top-left badge. |
+| `label` | `string` | required | Uppercase monospace label above the title. |
+| `title` | `string` | required | Main cell heading. |
+| `description` | `string` | required | Supporting body text. |
+| `children` | `ReactNode` | `undefined` | Optional slot for CTAs, badges, or custom content. |
+| `index` | `number` | `0` | Stagger index for entrance animation delay (`index × 0.08s`). |
+| `className` | `string` | `""` | Extra CSS classes on the cell wrapper. |
+
+## Grid Layout
+
+The grid uses a 12-column base. Responsive breakpoints:
+
+| Breakpoint | Columns |
+|---|---|
+| Mobile (`< sm`) | 1 column (all cells full-width) |
+| Tablet (`sm`) | 2 columns |
+| Desktop (`md+`) | 12-column asymmetric (hero 8 + 4, then 4+4+4) |
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Staggered entrance animations, hover lift |
+| `lucide-react` | Cell icon library |

@@ -1,0 +1,87 @@
+---
+title: Before-After Slider
+description: A touch-friendly interactive image comparison slider with elastic spring physics, stretch effects, and vertical handle drag.
+---
+
+A touch-friendly interactive image comparison slider with a glassmorphic interface and smooth pointer-based reveal. Drag the center handle left and right to compare two images. Features elastic spring animation, divider stretch effect on fast drag, and vertical handle pull with snap-back.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add before-after-slider" />
+
+## File Structure
+
+```bash
+before-after-slider/
+├── before-after-slider.tsx  # Main slider & spring physics logic
+├── index.ts                 # Module entry point (re-exports)
+└── block.json               # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import { BeforeAfterSlider } from "@/components/blocks/before-after-slider";
+
+export default function Page() {
+  return (
+    <BeforeAfterSlider
+      before={{
+        src: "/blocks/before-after/gwen-8bit.png",
+        alt: "Gwen 8-bit pixel art",
+        label: "8-bit",
+      }}
+      after={{
+        src: "/blocks/before-after/gwen-4k.png",
+        alt: "Gwen 4K ultra HD",
+        label: "4K",
+      }}
+    />
+  );
+}
+```
+
+## Custom Starting Position
+
+```tsx
+<BeforeAfterSlider
+  before={{
+    src: "https://picsum.photos/seed/vintage/1280/720",
+    alt: "Vintage look",
+    label: "Vintage",
+  }}
+  after={{
+    src: "https://picsum.photos/seed/modern/1280/720",
+    alt: "Modern look",
+    label: "Modern",
+  }}
+  initialPosition={30}
+  className="border-2 border-primary/20"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `before` | `SliderImage` | required | Before image config with `src`, optional `alt`, and optional `label`. |
+| `after` | `SliderImage` | required | After image config, revealed by sliding the handle left. |
+| `initialPosition` | `number` | `50` | Starting handle position (0–100). |
+| `className` | `string` | `""` | Extra CSS classes on the root container. |
+
+## SliderImage Type
+
+```ts
+interface SliderImage {
+  src: string;
+  alt?: string;
+  label?: string; // Glassmorphic overlay label (e.g. "Before" / "After")
+}
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Spring physics, stretch effect, entrance animation |
+| `lucide-react` | Handle strip icon |

@@ -1,0 +1,165 @@
+---
+title: Feature Walkthrough
+description: Interactive step-by-step walkthrough with sticky preview panel, glass card visuals, and optional auto-play. Ideal for product onboarding.
+---
+
+A split-layout feature walkthrough for product onboarding and marketing pages. The left panel lists clickable steps with a sliding orange indicator; the right panel shows a sticky glass preview card with animated visual transitions. Ships with GwenUI CLI-themed demo data out of the box.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add feature-walkthrough" />
+
+## File Structure
+
+```bash
+feature-walkthrough/
+├── FeatureWalkthrough.tsx   # FeatureWalkthrough component & demo visuals
+├── index.ts                 # Module entry point (re-exports)
+└── block.json               # Block metadata configuration
+```
+
+## Usage
+
+Drop in the default GwenUI CLI walkthrough:
+
+```tsx
+import { FeatureWalkthrough } from "@/components/blocks/feature-walkthrough";
+
+export default function Page() {
+  return <FeatureWalkthrough />;
+}
+```
+
+## Auto-play
+
+Enable automatic step cycling. Playback pauses while the user hovers over the component.
+
+```tsx
+import { FeatureWalkthrough } from "@/components/blocks/feature-walkthrough";
+
+export default function Page() {
+  return (
+    <FeatureWalkthrough
+      autoPlay
+      autoPlayInterval={5000}
+    />
+  );
+}
+```
+
+## Custom Steps
+
+Pass your own steps with custom preview visuals. Each `visual` is a `ReactNode` rendered inside the glass preview panel.
+
+```tsx
+import { FeatureWalkthrough } from "@/components/blocks/feature-walkthrough";
+import type { WalkthroughStep } from "@/components/blocks/feature-walkthrough";
+
+function DashboardPreview() {
+  return (
+    <div style={{ padding: "1rem", textAlign: "center", color: "oklch(0.7 0.02 265)" }}>
+      Your dashboard preview here
+    </div>
+  );
+}
+
+const steps: WalkthroughStep[] = [
+  {
+    id: "connect",
+    stepNumber: "01",
+    title: "Connect",
+    description: "Link your workspace in one click.",
+    badge: "New",
+    visual: <DashboardPreview />,
+  },
+  {
+    id: "configure",
+    stepNumber: "02",
+    title: "Configure",
+    description: "Set preferences and invite your team.",
+    visual: <DashboardPreview />,
+  },
+  {
+    id: "launch",
+    stepNumber: "03",
+    title: "Launch",
+    description: "Go live with full analytics enabled.",
+    visual: <DashboardPreview />,
+  },
+];
+
+export default function Page() {
+  return <FeatureWalkthrough steps={steps} />;
+}
+```
+
+## Default Demo Steps
+
+The built-in demo walks through the GwenUI CLI workflow:
+
+| Step | Title | Preview |
+|---|---|---|
+| 01 | Install | Terminal mockup — `npx gwenui init` |
+| 02 | Browse Blocks | Mini block card grid (3 cards) |
+| 03 | Add to Project | Terminal mockup — `gwenui add bento-grid` |
+| 04 | Customize | OKLCH CSS token snippet |
+| 05 | Ship | Deploy success card with checkmark |
+
+## FeatureWalkthrough Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `steps` | `WalkthroughStep[]` | GwenUI CLI demo | Array of walkthrough steps. |
+| `autoPlay` | `boolean` | `false` | Automatically cycle through steps. |
+| `autoPlayInterval` | `number` | `4000` | Interval between auto-play transitions (ms). |
+| `className` | `string` | `undefined` | Extra class on the root container. |
+
+## WalkthroughStep Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `id` | `string` | required | Unique step identifier (used for active state & animations). |
+| `stepNumber` | `string` | required | Display label e.g. `"01"`, `"02"` (Space Mono, orange). |
+| `title` | `string` | required | Step heading (Plus Jakarta Sans Bold). |
+| `description` | `string` | required | Supporting body copy below the title. |
+| `visual` | `ReactNode` | required | Content rendered in the right preview panel. |
+| `badge` | `string` | `undefined` | Optional pill above the step number e.g. `"CLI"`, `"New"`. |
+
+## Layout & Interaction
+
+| Area | Behavior |
+|---|---|
+| Left panel | Vertical step list; click or focus to activate |
+| Active step | Orange left border, surface background, spring `layoutId` indicator |
+| Inactive step | Muted title, transparent background |
+| Right panel | Sticky glass card (desktop); static on mobile |
+| Preview transition | `AnimatePresence` slide — opacity + 20px horizontal |
+| Auto-play | Cycles on interval; pauses on `mouseenter`, resumes on `mouseleave` |
+
+## Responsive
+
+| Breakpoint | Behavior |
+|---|---|
+| Desktop (`> 768px`) | 40% steps / 60% preview grid; preview sticky at `top: 2rem` |
+| Mobile (`≤ 768px`) | Single column — preview stacks below steps |
+
+## Accessibility
+
+- Steps use `role="tablist"` / `role="tab"` / `role="tabpanel"`
+- `aria-selected`, `aria-controls`, and `aria-labelledby` wire tabs to panels
+- Steps are native `<button>` elements — keyboard focusable
+
+## Styling
+
+All layout and theme styles ship via an embedded `<style>` tag (no Tailwind grid utilities). Gwen Noir tokens:
+
+- Background: `oklch(0.1895 0.0496 296)`
+- Primary accent: `oklch(0.7204 0.1507 48)`
+- Preview card: `oklch(0.13 0.005 265)` with orange-tinted border
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Step indicator `layoutId`, preview `AnimatePresence` transitions |
+| `lucide-react` | Icons in default demo visuals |

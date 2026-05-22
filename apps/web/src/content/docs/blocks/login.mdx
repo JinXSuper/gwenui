@@ -1,0 +1,47 @@
+---
+title: Auth — Login
+description: A cinematic glassmorphic login screen with animated noise background and floating grid elements.
+---
+
+A cinematic, dark-themed, glassmorphic login screen block with animated noise background effects and floating grid elements. Fully accessible, responsive, and ready to be dropped into any Next.js application.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add login" />
+
+## File Structure
+
+```bash
+auth-login/
+├── index.tsx                    # Main entry point
+├── components/
+│   ├── LoginForm.tsx            # Full login form with validation
+│   └── OAuthButtons.tsx         # Google & GitHub OAuth buttons
+└── block.json                   # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import { LoginForm } from "@/components/auth-login/LoginForm";
+
+export default function LoginPage() {
+  return <LoginForm />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `showOAuth` | `boolean` | `true` | Show Google and GitHub OAuth buttons below the form. |
+| `showRememberMe` | `boolean` | `true` | Display the remember-me checkbox above the submit button. |
+| `className` | `string` | `""` | Extra Tailwind classes on the root layout container. |
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Background noise animation & form transitions |
+| `lucide-react` | Vector icon library |
+| `@radix-ui/react-slot` | Accessible button composition |

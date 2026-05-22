@@ -1,0 +1,119 @@
+---
+title: Comparison Table
+description: Feature comparison table with billing toggle, highlighted column, and sticky headers. Ideal for SaaS pricing pages.
+---
+
+Pricing-style comparison table inspired by Claude's subscription page. Supports monthly/annual billing toggle with animated price transitions, a highlighted "Most Popular" column, sticky feature label column on mobile, and per-category row grouping.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add comparison-table" />
+
+## File Structure
+
+```bash
+comparison-table/
+├── ComparisonTable.tsx   # ComparisonTable component & demo data
+├── index.ts              # Module entry point (re-exports)
+└── block.json            # Block metadata configuration
+```
+
+## Usage
+
+Drop in the default table with GwenUI pricing demo data:
+
+```tsx
+import { ComparisonTable } from "@/components/blocks/comparison-table";
+
+export default function Page() {
+  return <ComparisonTable />;
+}
+```
+
+## Custom Plans & Features
+
+Pass your own plans and features:
+
+```tsx
+import { ComparisonTable } from "@/components/blocks/comparison-table";
+import type { ComparisonPlan, ComparisonFeature } from "@/components/blocks/comparison-table";
+
+const plans: ComparisonPlan[] = [
+  { id: "free",  name: "Free",  price: { monthly: 0 } },
+  { id: "pro",   name: "Pro",   price: { monthly: 20, annual: 17 }, highlighted: true, badge: "Most Popular" },
+  { id: "team",  name: "Team",  price: { monthly: 25, annual: 20 }, badge: "Best Value" },
+];
+
+const features: ComparisonFeature[] = [
+  {
+    category: "Usage",
+    label: "Messages per day",
+    values: { free: "Limited", pro: "5× Free", team: "Pooled" },
+  },
+  {
+    category: "Usage",
+    label: "Priority access",
+    values: { free: false, pro: true, team: true },
+  },
+  {
+    category: "Features",
+    label: "Claude Code",
+    values: { free: false, pro: true, team: true },
+  },
+];
+
+export default function Page() {
+  return (
+    <ComparisonTable
+      plans={plans}
+      features={features}
+      billingToggle
+      ctaLabel="Get Started"
+      onCtaClick={(planId) => console.log("Selected:", planId)}
+    />
+  );
+}
+```
+
+## ComparisonTable Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `plans` | `ComparisonPlan[]` | demo data | Array of plan columns. |
+| `features` | `ComparisonFeature[]` | demo data | Array of feature rows grouped by category. |
+| `billingToggle` | `boolean` | `true` | Show monthly/annual billing toggle. |
+| `ctaLabel` | `string` | `"Get Started"` | CTA button label for all plans. |
+| `onCtaClick` | `(planId: string) => void` | `undefined` | Callback when a CTA button is clicked. |
+
+## ComparisonPlan Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `id` | `string` | required | Unique plan identifier. |
+| `name` | `string` | required | Plan display name. |
+| `price` | `{ monthly: number \| "Custom", annual?: number \| "Custom" }` | required | Pricing object. |
+| `highlighted` | `boolean` | `false` | Adds orange top border and tinted background. |
+| `badge` | `string` | `undefined` | Pill badge shown above plan name e.g. `"Most Popular"`. |
+
+## ComparisonFeature Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `category` | `string` | required | Group header label (Space Mono, uppercase). |
+| `label` | `string` | required | Feature row label. |
+| `tooltip` | `string` | `undefined` | Info tooltip shown on hover. |
+| `values` | `Record<string, boolean \| string>` | required | Map of `planId → value`. `true` = check, `false` = cross, string = custom text. |
+
+## Layout
+
+| Breakpoint | Behavior |
+|---|---|
+| Mobile | Horizontal scroll, feature label column sticky left |
+| Tablet+ | Full table, all columns visible |
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Billing toggle price animation |
+| `lucide-react` | Check / X icons, Info tooltip icon |

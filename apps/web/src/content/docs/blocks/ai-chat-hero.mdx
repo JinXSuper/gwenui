@@ -1,0 +1,68 @@
+---
+title: AI Chat Hero
+description: Full-page AI chat interface hero block, Gemini-inspired with GwenUI dark tokens.
+---
+
+Full-page AI chat interface hero block, Gemini-inspired with GwenUI dark tokens. Features a customizable sidebar, interactive models dropdown, dynamic chat input with file uploads, suggestion chips with smooth micro-interactions, and high-fidelity ambient light glow effects.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add ai-chat-hero" />
+
+## File Structure
+
+```bash
+ai-chat-hero/
+├── index.tsx                # Main entry point (AIChatHero)
+├── components/
+│   ├── ChatSidebar.tsx      # Icon-only desktop sidebar
+│   ├── ChatInput.tsx        # Pill-shaped chat input bar & menus
+│   └── SuggestionChips.tsx  # Dynamic suggestion chips row
+├── hooks/
+│   └── useChatInput.ts      # Stdin/textarea state controller hook
+└── block.json               # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import AIChatHero from "@/components/blocks/ai-chat-hero";
+
+export default function Page() {
+  const handleSubmit = (value: string) => {
+    console.log("Chat submitted:", value);
+  };
+
+  return (
+    <AIChatHero
+      headline="I'm Gwen, let's build our dreams together!"
+      headlineAccent="Gwen"
+      onSubmit={handleSubmit}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `headline` | `string` | `"I'm Gwen, lets build our dreams together!"` | Main hero greeting headline text. |
+| `headlineAccent` | `string` | `"Gwen"` | Substring to apply the primary gradient glow to. |
+| `placeholder` | `string` | `"Ask Gwen..."` | Input placeholder text. |
+| `modelName` | `string` | `"Gwen 1.0 Supreme"` | Default active model name. |
+| `chips` | `{ label: string; prompt: string }[]` | 4 defaults | Suggestion chips displayed above the input. |
+| `avatarInitials` | `string` | `"JS"` | Initials displayed inside the user avatar circle. |
+| `onSubmit` | `(value: string) => void` | `undefined` | Callback fired on message submit. |
+| `onChipClick` | `(prompt: string) => void` | `undefined` | Callback fired when a chip is clicked. |
+| `onModelClick` | `() => void` | `undefined` | Callback fired when the model selector is clicked. |
+| `onMicClick` | `() => void` | `undefined` | Callback fired when the mic button is clicked. |
+| `className` | `string` | `""` | Extra CSS classes on the root container. |
+| `fullscreen` | `boolean` | `false` | Fits the container to the parent viewport. |
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Fluid visual transitions & animations |
+| `lucide-react` | Vector icon library |

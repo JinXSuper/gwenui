@@ -1,0 +1,114 @@
+---
+title: Dynamic Pricing
+description: A premium multi-tier pricing grid with slot-machine digit animations and auto-calculating billing intervals.
+---
+
+A premium multi-tier pricing grid with auto-calculating billing intervals. Features a sleek segmented control switcher, interactive slot-machine style digit rolling animations on period toggle, staggered digital transitions, and custom savings badges.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add dynamic-pricing" />
+
+## File Structure
+
+```bash
+dynamic-pricing/
+├── dynamic-pricing.tsx      # Main pricing grid & calculate logic
+├── index.ts                 # Module entry point (re-exports)
+└── block.json               # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import { DynamicPricing } from "@/components/blocks/dynamic-pricing";
+
+export default function Page() {
+  return (
+    <DynamicPricing
+      plans={[
+        {
+          name: "Starter",
+          description: "Perfect for indie devs",
+          monthly: 9,
+          features: ["5 projects", "Basic components", "Community support"],
+          cta: "Start Free",
+        },
+        {
+          name: "Pro",
+          description: "For serious builders",
+          monthly: 29,
+          highlighted: true,
+          features: ["Unlimited projects", "All blocks", "Priority support", "Early access"],
+          cta: "Get Pro",
+        },
+        {
+          name: "Team",
+          description: "For growing teams",
+          monthly: 79,
+          features: ["Everything in Pro", "5 seats", "Team dashboard", "Custom blocks"],
+          cta: "Get Team",
+        },
+      ]}
+    />
+  );
+}
+```
+
+## Custom Multiplier & Discount
+
+```tsx
+<DynamicPricing
+  currency="€"
+  discount={25}
+  lifetimeMultiplier={24}
+  plans={[
+    {
+      name: "Individual",
+      monthly: 12,
+      features: ["1 user", "All components", "Standard support"],
+    },
+    {
+      name: "Enterprise",
+      monthly: 49,
+      highlighted: true,
+      features: ["Unlimited users", "Custom theme", "24/7 dedicated support"],
+    },
+  ]}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `plans` | `PricingPlan[]` | required | List of plans with name, monthly rate, features, and optional highlighting. |
+| `title` | `string` | `"Simple, Transparent Pricing"` | Heading centered above the billing toggle. |
+| `subtitle` | `string` | `"Choose the perfect plan..."` | Subtitle below the heading. |
+| `currency` | `string` | `"$"` | Currency symbol (e.g. `$`, `€`, `£`). |
+| `discount` | `number` | `20` | Percentage discount for annual billing. |
+| `lifetimeMultiplier` | `number` | `30` | Multiplier applied to monthly rate for lifetime price. |
+| `scrambleDuration` | `number` | `0.3` | Duration of digit scramble animation in seconds. |
+| `className` | `string` | `""` | Extra CSS classes on the root section. |
+
+## PricingPlan Type
+
+```ts
+interface PricingPlan {
+  name: string
+  description?: string
+  monthly: number
+  features: string[]
+  featuresLabel?: string   // default "FEATURES"
+  featuresNote?: string    // e.g. "Everything in Basic Plus"
+  cta?: string
+  highlighted?: boolean    // glass shimmer card + "Popular" badge
+}
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Spring-based slot machine and pill-toggle animations |
+| `lucide-react` | Vector check icons |

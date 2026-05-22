@@ -1,0 +1,92 @@
+---
+title: Testimonial Marquee
+description: Infinite auto-scroll testimonial marquee with Twitter/X style cards and dual-row opposite-direction layout.
+---
+
+Infinite auto-scroll testimonial marquee with Twitter/X style cards. Features dual-row layout with opposite scroll directions, gradient fade edges, verified badges, pause-on-hover interaction, and seamless infinite looping powered by Framer Motion.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add testimonial-marquee" />
+
+## File Structure
+
+```bash
+testimonial-marquee/
+├── index.tsx                # Main entry point (TestimonialMarquee)
+├── components/
+│   ├── TestimonialCard.tsx  # Twitter/X style testimonial card
+│   └── MarqueeRow.tsx       # Infinite scroll row with Framer Motion
+└── block.json               # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import TestimonialMarquee from "@/components/blocks/testimonial-marquee";
+
+export default function Page() {
+  return (
+    <TestimonialMarquee
+      rows={2}
+      speed={30}
+      pauseOnHover
+    />
+  );
+}
+```
+
+## Custom Testimonials
+
+```tsx
+const myTestimonials = [
+  {
+    id: "1",
+    name: "Jane Doe",
+    handle: "@janedoe",
+    avatar: "https://picsum.photos/seed/jane/100/100",
+    quote: "This is amazing!",
+    date: "May 1, 2025",
+    verified: true,
+  },
+];
+
+<TestimonialMarquee
+  testimonials={myTestimonials}
+  rows={2}
+  speed={25}
+  pauseOnHover
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `testimonials` | `Testimonial[]` | 8 defaults | Array of testimonial objects. Falls back to 8 built-in entries. |
+| `speed` | `number` | `30` | Duration in seconds for one full marquee loop cycle. |
+| `rows` | `1 \| 2` | `2` | Number of rows. Row 2 scrolls in the opposite direction. |
+| `pauseOnHover` | `boolean` | `true` | Pauses the marquee when the user hovers over a row. |
+| `animated` | `boolean` | `true` | Set to `false` to display static rows. |
+| `className` | `string` | `""` | Extra CSS classes on the root section. |
+
+## Testimonial Type
+
+```ts
+interface Testimonial {
+  id: string
+  name: string
+  handle: string
+  avatar: string
+  quote: string
+  date: string
+  verified?: boolean
+}
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Infinite marquee animation & pause control |
+| `lucide-react` | Vector icon library |

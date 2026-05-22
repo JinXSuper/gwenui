@@ -1,0 +1,81 @@
+---
+title: Meet the Team
+description: A premium editorial Meet the Team block with playing-card style member profiles and photo overflow animations.
+---
+
+A premium editorial Meet the Team block featuring playing-card style member profiles. Members are presented in a fluid pagination layout where the first card is featured (larger and rotated). Interactive card clicks trigger photos to animate in overflowing above the card, with smooth text blur-in and bio slides.
+
+## Installation
+
+<PackageManagerTabs command="dlx @gwenui/cli add meet-the-team" />
+
+## File Structure
+
+```bash
+meet-the-team/
+├── meet-the-team.tsx      # Main editorial grid & pagination logic
+├── index.ts               # Module entry point (re-exports)
+└── block.json             # Block metadata configuration
+```
+
+## Usage
+
+```tsx
+import { MeetTheTeam } from "@/components/blocks/meet-the-team";
+
+export default function Page() {
+  return (
+    <MeetTheTeam
+      members={[
+        {
+          name: "Liora Gwen",
+          role: "Head of Design",
+          about: "Crafts interfaces that feel alive — blending motion and clarity into every pixel.",
+          image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+        },
+        {
+          name: "Aria Voss",
+          role: "Lead Engineer",
+          about: "Turns complex systems into elegant, maintainable code at any scale.",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+        },
+        {
+          name: "Sena Park",
+          role: "Product Strategist",
+          about: "Bridges user needs and business goals with sharp product instinct.",
+          image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+        },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `members` | `TeamMember[]` | required | List of team members to display (3 per page). |
+| `title` | `string` | `"Team"` | Main heading in editorial Lora serif style. |
+| `titleAccent` | `string` | `"our"` | Italicized accent word next to the title (e.g. `"our"`, `"the"`). |
+| `brandMark` | `string` | `"G"` | Top-left brand monogram displayed on each card. |
+| `className` | `string` | `""` | Extra CSS classes on the root section. |
+
+## TeamMember Type
+
+```ts
+interface TeamMember {
+  name: string
+  role: string
+  about: string
+  image: string       // Photo URL
+  number?: number     // Card number shown top-right
+}
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| `framer-motion` | Spring physics card hovers, photo entries, text blur transitions |
+| `lucide-react` | Chevron left/right icons for pagination |

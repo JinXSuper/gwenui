@@ -1,0 +1,75 @@
+---
+title: add
+description: Add a GwenUI block to your project.
+---
+
+## Usage
+
+```bash
+gwen-ui add <block>
+```
+
+## Example
+
+```bash
+gwen-ui add pricing
+gwen-ui add bento-grid
+gwen-ui add parallax-hero
+```
+
+## What it does
+
+When you run `gwen-ui add <block>`, the CLI:
+
+1. **Looks up the block** in the GwenUI registry
+2. **Checks for conflicts** — warns if files already exist in your project
+3. **Copies source files** into your configured blocks directory
+4. **Installs dependencies** — any packages the block requires
+
+> Run `gwen-ui init` first if you haven't set up GwenUI in your project.
+
+## Conflict detection
+
+If a block already exists in your project, the CLI will warn you:
+
+```
+⚠ pricing already exists at src/components/blocks/pricing/
+? Overwrite? › No / Yes
+```
+
+Choosing **No** skips the block. Choosing **Yes** overwrites existing files.
+
+## Block categories
+
+| Category | Description | Example |
+|---|---|---|
+| `basic` | 2D blocks, Framer Motion | `pricing`, `bento-grid` |
+| `supreme` | 3D blocks, R3F + WebGL | `parallax-hero` |
+
+## Options
+
+| Flag | Description |
+|---|---|
+| `--overwrite` | Overwrite existing files without prompting |
+| `--path <dir>` | Install to a custom directory |
+| `--cwd <path>` | Run from a specific directory |
+
+## Installing multiple blocks
+
+```bash
+# Add multiple blocks at once
+gwen-ui add pricing bento-grid testimonial-grid
+```
+
+## After install
+
+Blocks are copied to your configured directory (default: `src/components/blocks/`).
+Import and use directly:
+
+```tsx
+import { PricingBlock } from '@/components/blocks/pricing'
+
+export default function Page() {
+  return <PricingBlock />
+}
+```

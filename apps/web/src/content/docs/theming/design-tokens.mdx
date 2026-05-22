@@ -1,0 +1,75 @@
+---
+title: Design Tokens
+description: GwenUI uses OKLCH-based CSS custom properties as design tokens. All colors, spacing, and typography are defined as tokens — no hardcoded values anywhere in the component tree.
+---
+
+## What are design tokens?
+
+Design tokens are named values that represent design decisions. In GwenUI, tokens are
+CSS custom properties injected by `@gwenui/themes` into your `globals.css`.
+
+Every component references tokens exclusively — swapping a token value updates
+every component that uses it instantly, with no rebuild required.
+
+## Token reference
+
+### Colors
+
+| Token | Value | Usage |
+|---|---|---|
+| `--primary` | `oklch(68% 0.18 48)` | Buttons, links, active states |
+| `--primary-hover` | `oklch(72% 0.17 52)` | Hover state for primary elements |
+| `--background` | `oklch(10% 0.005 265)` | Page background |
+| `--surface` | `oklch(13% 0.005 265)` | Cards, panels, elevated surfaces |
+| `--glass` | `oklch(100% 0 0 / 3%)` | Glassmorphism overlays |
+| `--border` | `oklch(68% 0.18 48 / 20%)` | Borders and dividers |
+| `--text` | `oklch(97% 0.003 265)` | Primary text |
+| `--text-muted` | `oklch(65% 0.008 265)` | Secondary text, placeholders |
+
+### Typography
+
+| Token | Value | Usage |
+|---|---|---|
+| `--font-sans` | `Plus Jakarta Sans` | Body text, UI elements |
+| `--font-serif` | `Lora` | Display headings, hero text |
+| `--font-mono` | `Space Mono` | Code blocks, terminals |
+
+## Overriding tokens
+
+All tokens are CSS custom properties — override any of them in your `globals.css`:
+
+```css
+:root {
+  /* Change primary from Gwen Orange to something else */
+  --primary: oklch(60% 0.2 270);  /* purple */
+}
+```
+
+> Changes apply instantly without rebuilding. Tokens cascade — overriding
+> `--primary` automatically updates all borders, glows, and accent elements
+> that reference it.
+
+## Token naming convention
+
+GwenUI tokens follow a semantic naming pattern — tokens describe **purpose**,
+not appearance:
+
+```css
+/* ✅ Semantic — describes purpose */
+--text-muted
+--surface
+--primary
+
+/* ❌ Avoid — describes appearance */
+--gray-500
+--orange-400
+```
+
+This means you can retheme GwenUI completely without touching component code.
+
+## Theme names
+
+| Theme | Description |
+|---|---|
+| `gwen-noir` | Default dark theme — deep midnight zinc + Gwen Orange |
+| `violet-dusk` | Light theme — warm peach + soft violet (coming soon) |

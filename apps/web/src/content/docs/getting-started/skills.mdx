@@ -1,0 +1,63 @@
+---
+title: Skills
+description: Extend Gwen's knowledge dengan custom skill files — inject konteks project kamu langsung ke AI coding workflow.
+---
+
+## What are Skills?
+
+Skills are Markdown files that teach Gwen (and any Claude-powered IDE) about your project's conventions, design tokens, and coding patterns. Instead of re-explaining your stack every session, skills inject that context automatically.
+
+```
+~/.gwen/skills/
+├── gwen-code.md        # GwenUI tokens, theming, component patterns
+├── block-making.md     # How to build a GwenUI block
+├── animation-patterns.md
+└── ...
+```
+
+> Skills live locally on your machine and are injected by the CLI on `init`. They never get committed to your repo.
+
+## Install Skills
+
+<PackageManagerTabs command="dlx skills add JinXSuper/gwenui" />
+
+This pulls all 9 official GwenUI skill files into `~/.gwen/skills/`.
+
+## Available Skills
+
+| Skill | Description |
+|-------|-------------|
+| `gwen-code` | GwenUI design tokens, OKLCH colors, theming |
+| `block-making` | Block architecture, file structure, exports |
+| `component-making` | shadcn/ui base + GwenUI styling patterns |
+| `animation-patterns` | Framer Motion recipes used across GwenUI |
+| `typography` | Font stack, sizing scale, spacing rules |
+| `tokens` | Full OKLCH token reference |
+| `docs-writing` | MDX conventions for this docs site |
+| `landing-page-hierarchy` | Layout hierarchy for marketing pages |
+| `r3f-patterns` | React Three Fiber patterns for Supreme blocks |
+
+## Auto-inject on Init
+
+When you run `gwen-ui init`, skills are automatically injected into your IDE context if supported (Cursor, Kiro, Antigravity, Claude Code).
+
+```bash
+npx gwen-ui init
+# ✓ Tokens configured
+# ✓ Skills injected → ~/.gwen/skills/
+```
+
+## Add a Custom Skill
+
+Create any `.md` file in `~/.gwen/skills/` and it will be picked up automatically:
+
+```md
+<!-- ~/.gwen/skills/my-project.md -->
+# My Project conventions
+
+- Always use `pnpm`
+- Components live in `src/components/ui/`
+- ...
+```
+
+> Coming soon: `gwen-ui skills list`, `gwen-ui skills add <name>`, `gwen-ui skills remove <name>`

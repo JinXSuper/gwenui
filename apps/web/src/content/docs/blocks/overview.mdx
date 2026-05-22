@@ -1,0 +1,59 @@
+---
+title: Blocks Overview
+description: Production-ready UI blocks for Next.js. Drop in, customize, ship.
+---
+
+GwenUI blocks are complete, self-contained UI sections — not just components. Each block is a full feature slice you can drop into any Next.js project and own entirely.
+
+## What's a block?
+
+A block is a production-ready UI section with:
+
+- **Full source code** — no black boxes, no hidden logic
+- **TypeScript types** — every prop is typed and documented
+- **Framer Motion animations** — entrance, hover, and interaction states
+- **Gwen Noir tokens** — OKLCH dark theme out of the box
+- **Zero lock-in** — copy the files, they're yours
+
+## Available Blocks
+
+| Block | Category | Tier |
+|---|---|---|
+| [Auth — Login](/docs/blocks/login) | Authentication | Basic |
+| [AI Chat Hero](/docs/blocks/ai-chat-hero) | Hero | Basic |
+| [Testimonial Marquee](/docs/blocks/testimonial-marquee) | Social Proof | Basic |
+| [Dynamic Pricing](/docs/blocks/dynamic-pricing) | Pricing | Basic |
+| [Meet the Team](/docs/blocks/meet-the-team) | Team | Basic |
+| [Before-After Slider](/docs/blocks/before-after-slider) | Feature | Basic |
+| [Bento Grid](/docs/blocks/bento-grid) | Layout | Basic |
+| [Parallax Hero](/docs/supreme/parallax-hero) | Hero | Supreme |
+
+## Tiers
+
+**Basic** — MIT licensed. Free to use in personal and commercial projects.
+
+**Supreme** — BSL 1.1 licensed. Exclusive blocks with advanced 3D, WebGL, and R3F effects. Source-available with commercial use terms per the BSL.
+
+## Installing a block
+
+```bash
+npx @gwenui/cli add <block-name>
+```
+
+The CLI copies the block source files directly into your project. You own the code — no runtime dependency on GwenUI.
+
+## Manual install
+
+Every block docs page has a **Source Code** button (top-right of the preview panel) that shows the full source. Copy it directly if you prefer not to use the CLI.
+
+## Customization
+
+Blocks use CSS variables from the Gwen Noir token system. Override any token in your `globals.css`:
+
+```css
+:root {
+  --primary: oklch(0.72 0.15 200); /* swap orange → teal */
+}
+```
+
+All colors, radii, shadows, and spacing respond to token changes automatically.

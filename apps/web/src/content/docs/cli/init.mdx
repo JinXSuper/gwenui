@@ -1,0 +1,70 @@
+---
+title: init
+description: Initialize GwenUI in your project and configure design tokens.
+---
+
+## Usage
+
+```bash
+gwen-ui init
+```
+
+## What it does
+
+`gwen-ui init` sets up GwenUI in your existing Next.js project:
+
+1. **Detects your project structure** — finds `src/` directory, `globals.css`, and `tailwind.config`
+2. **Installs `@gwenui/themes`** — foundation tokens and self-hosted fonts
+3. **Updates `globals.css`** — injects GwenUI OKLCH design tokens
+4. **Creates global config** — saves your preferences to `~/.gwen/config.json`
+
+## Interactive prompts
+
+Running `gwen-ui init` will ask you:
+
+```
+? Where is your global CSS file? › src/app/globals.css
+? Which theme do you want? › gwen-noir (dark)
+? Where should blocks be installed? › src/components/blocks
+```
+
+> If a `globals.css` already exists, `init` will append tokens without
+> overwriting your existing styles.
+
+## Options
+
+| Flag | Description |
+|---|---|
+| `--force` | Skip conflict checks and overwrite existing config |
+| `--yes` | Accept all defaults without prompting |
+| `--cwd <path>` | Run from a specific directory |
+
+## Example
+
+```bash
+# Interactive setup
+gwen-ui init
+
+# Silent setup with defaults
+gwen-ui init --yes
+
+# Force reinitialize
+gwen-ui init --force
+```
+
+## After init
+
+Once initialized, your `globals.css` will include GwenUI tokens:
+
+```css
+/* GwenUI Design Tokens — injected by gwen-ui init */
+:root {
+  --primary:      oklch(68% 0.18 48);
+  --primary-hover: oklch(72% 0.17 52);
+  --background:   oklch(10% 0.005 265);
+  --surface:      oklch(13% 0.005 265);
+  --border:       oklch(68% 0.18 48 / 20%);
+  --text:         oklch(97% 0.003 265);
+  --text-muted:   oklch(65% 0.008 265);
+}
+```
