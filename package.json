@@ -1,0 +1,16 @@
+{
+  "name": "gwenui",
+  "version": "0.4.1",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "blocks"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint"
+  }
+}
